@@ -3,10 +3,10 @@ from service.questionnaire import Questionnaire
 
 
 
-questionnaire = Questionnaire()
+testquestionnaire = Questionnaire()
 
-answers = questionnaire.run()
-user = questionnaire.build_profile()
+answers = testquestionnaire.run()
+user = testquestionnaire.build_profile()
 
 print("\nRéponses de l'utilisateur :")
 
