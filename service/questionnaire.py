@@ -1,4 +1,7 @@
-#définition du quetionnaire sous forme de classe, utile pour quand on fera plusieurs questionnaires en même temps
+#définition du questionnaire sous forme de classe, utile pour quand on fera plusieurs questionnaires en même temps
+from dataclasses import dataclass  #fonction python qui permet de créer des classes de données
+from typing import List, Optional
+import math
 
 
 class Questionnaire:
@@ -132,4 +135,98 @@ class Questionnaire:
         )
 
         return self.answers
+
+    
+    def build_profile(self):
+
+        runtime_map = {
+            "Film très court (1h15 max)": 75,
+            "Un peu de temps mais pas plus que ça (1h30 max)": 90,
+            "Pas spécialement limitée par le temps (2h15 max)": 135,
+            "Prêt.e pour un marathon (plus de 2h)": 999,
+            "Je ne sais pas": None
+        }
+
+        period_map = {
+            "Très récent (2016 à aujourd'hui)": 2020,
+            "Récent (2005-2016)": 2010,
+            "Moyen (1990-2005)": 1998,
+            "Vieux (1970-1990)": 1980,
+            "Très vieux (avant 1970)": 1955,
+            "Je ne sais pas": None
+        }
+
+        language_map = {
+            "Français": "fr",
+            "Anglais": "en",
+            "Espagnol": "es",
+            "Allemand": "de",
+            "Italien": "it",
+            "Sans préférence": None
+        }
+
+        sadness_map = {
+            "Je veux quelque chose de léger": 2,
+            "Je peux passer des rires aux larmes": 5,
+            "J'ai les nerfs accrochés": 9
+        }
+
+        popularity_map = {
+            "Un grand classique du cinéma": "classic",
+            "Un film peu connu": "niche",
+            "Un coup de cœur du public": "popular"
+        }
+
+        genres = self.answers["genres"]
+
+        if "Peu importe" in genres:
+            genres = None
+
+        dealbreakers = self.answers["dealbreakers"]
+
+        return UserProfile(
+
+            max_runtime=runtime_map[self.answers["runtime"]],
+
+            target_year=period_map[self.answers["period"]],
+
+            genres=genres,
+
+            language=language_map[self.answers["language"]],
+
+            forbid_black_white="Film en noir et blanc" in dealbreakers,
+
+            forbid_silent="Film muet" in dealbreakers,
+
+            target_sadness=sadness_map[self.answers["sadness"]],
+
+            popularity_mode=popularity_map[self.answers["popularity"]]
+
+        )
+
+        
+      
+@dataclass
+class UserProfile:
+    max_runtime: Optional[int]
+
+    target_year: Optional[int]
+    sigma_year: float = 12
+
+    genres: Optional[List[str]] = None
+
+    language: Optional[str] = None
+
+    forbid_black_white: bool = False
+    forbid_silent: bool = False
+
+    target_sadness: Optional[float] = None
+
+    popularity_mode: Optional[str] = None
+    # "classic"
+    # "niche"
+    # "popular"
+
+
+
 
