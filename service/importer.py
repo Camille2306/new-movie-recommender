@@ -18,7 +18,7 @@ def import_movies():
 
     create_tables(connection)
 
-    NUMBER_OF_PAGES = 100
+    NUMBER_OF_PAGES = 10
 
     for page in range(1, NUMBER_OF_PAGES + 1):
 
@@ -42,3 +42,6 @@ def import_movies():
 if __name__ == "__main__":
 
     import_movies()
+
+
+
