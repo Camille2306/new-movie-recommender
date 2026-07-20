@@ -5,7 +5,7 @@ from typing import Optional, List
 @dataclass
 class MovieProfile:
 
-    id: int
+    #id: int
     title: str
 
     runtime: Optional[int]
@@ -14,11 +14,11 @@ class MovieProfile:
 
     language: Optional[str]
 
-    popularity: Optional[float]
+    #popularity: Optional[float]
 
-    vote_average: Optional[float]
+    #vote_average: Optional[float]
 
-    vote_count: Optional[int]
+    #vote_count: Optional[int]
 
     genres: Optional[List[str]] = None
 
