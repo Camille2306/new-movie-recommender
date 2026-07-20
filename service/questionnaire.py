@@ -4,6 +4,30 @@ from typing import List, Optional
 import math
 
 
+
+@dataclass
+class UserProfile:
+    max_runtime: Optional[int]
+
+    target_year: Optional[int]
+    sigma_year: float = 12
+
+    genres: Optional[List[str]] = None
+
+    language: Optional[str] = None
+
+    forbid_black_white: bool = False
+    forbid_silent: bool = False
+
+    target_sadness: Optional[float] = None
+
+    popularity_mode: Optional[str] = None
+    # "classic"
+    # "niche"
+    # "popular"
+
+
+
 class Questionnaire:
 
     def __init__(self):
@@ -206,26 +230,7 @@ class Questionnaire:
 
         
       
-@dataclass
-class UserProfile:
-    max_runtime: Optional[int]
 
-    target_year: Optional[int]
-    sigma_year: float = 12
-
-    genres: Optional[List[str]] = None
-
-    language: Optional[str] = None
-
-    forbid_black_white: bool = False
-    forbid_silent: bool = False
-
-    target_sadness: Optional[float] = None
-
-    popularity_mode: Optional[str] = None
-    # "classic"
-    # "niche"
-    # "popular"
 
 
 
