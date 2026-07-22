@@ -102,6 +102,9 @@ def year_score(user: UserProfile, movie: MovieProfile) -> float:
     Score gaussien autour de l'année souhaitée.
     """
 
+    if movie.release_year is None:
+        return 0
+
     delta = movie.release_year - user.target_year
 
     return float(
@@ -183,10 +186,10 @@ def movie_score(user: UserProfile, movie: MovieProfile):
 if __name__ == "__main__":
 
     user = UserProfile(
-        max_runtime=75,
+        max_runtime=135,
         target_year=2000,
         sigma_year=12,
-        genres=["Romantique"],
+        genres=["Réflexion"],
         language="fr",
     )
 

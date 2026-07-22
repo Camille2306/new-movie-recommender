@@ -74,15 +74,15 @@ if __name__ == "__main__":
 
     from service.questionnaire import UserProfile
 
-    DATABASE = "data/moviestest.db"
+    DATABASE = "data/movies.db"
 
     print("=== Questionnaire ===")
 
     user_profile = UserProfile(
-        max_runtime=75,
+        max_runtime=135,
         target_year=2000,
         sigma_year=12,
-        genres=["Romantique"],
+        genres=["Réflexion"],
         language="fr",
     )
     
